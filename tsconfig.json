@@ -1,7 +1,18 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs"
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "strictNullChecks": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "inlineSources": true,
+        "lib": [
+            "es2015.promise",
+            "es5",
+            "dom"
+        ]
     },
     "exclude": [
         "node_modules"
