@@ -1,14 +1,12 @@
 import { InMessage } from './types/base'
 import fetch from 'node-fetch'
-import { secret } from './secret';
-import { send } from './util/sendMessage';
+import { secret } from './secret'
+import { createSender } from './util/sendMessage'
+import * as Chat from './chat'
+import * as R from 'ramda'
 
 export async function bot(message: InMessage) {
-    return send({
-        "provider": 'telegram',
-        "targetChat": message.from.id,
-        "replayToMessageId": message.id,
-        "content": "hei du"
-    })
-        .then(res => 'got in return: ' + JSON.stringify(res, null, 2))
+    const send = createSender('telegram', message.from.id)
+
+    if (message.content.match(/^\/start?/)) Chat.start(message.from.name).map(send)
 }

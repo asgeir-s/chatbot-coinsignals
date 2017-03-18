@@ -24,5 +24,20 @@ export type TelegramOutMessage = {
     chat_id: number | string
     text: string
     parse_mode?: "Markdown" | "HTML"
-    reply_to_message_id?: number | string
+    reply_to_message_id?: number | string,
+    reply_markup?: Keyboard | InlineKeyboard | undefined
+}
+
+export type Keyboard = {
+    keyboard: Array<Array<{ text: string }>>,
+    resize_keyboard?: boolean,
+    one_time_keyboard?: boolean
+}
+
+export type InlineKeyboard = {
+    inline_keyboard: Array<Array<{
+        text: string,
+        url?: string,
+        callback_data?: any
+    }>>
 }

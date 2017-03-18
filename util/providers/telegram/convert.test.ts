@@ -40,29 +40,29 @@ test('should convert generic OutMessage to Telegram-out-message', async t => {
     const outMessage1: OutMessage = {
         provider: 'telegram',
         targetChat: 123456,
-        content: "some content",
-        replayToMessageId: 9876,
-        contentType: "HTML"
+        content: {
+            text: "some content",
+            contentType: "HTML"
+        }
     }
 
     const outMessage2: OutMessage = {
         provider: 'telegram',
         targetChat: 321321,
-        content: "some content22",
-        replayToMessageId: 432432
+        content: {
+            text: "some content22"
+        }
     }
 
     const telegramOutMessage1: TelegramOutMessage = TelegramConverter.toOutMessage(outMessage1)
     const telegramOutMessage2: TelegramOutMessage = TelegramConverter.toOutMessage(outMessage2)
 
     t.is(telegramOutMessage1.chat_id, outMessage1.targetChat)
-    t.is(telegramOutMessage1.parse_mode, outMessage1.contentType)
-    t.is(telegramOutMessage1.reply_to_message_id, outMessage1.replayToMessageId)
-    t.is(telegramOutMessage1.text, outMessage1.content)
+    t.is(telegramOutMessage1.parse_mode, outMessage1.content.contentType)
+    t.is(telegramOutMessage1.text, outMessage1.content.text)
 
     t.is(telegramOutMessage2.chat_id, outMessage2.targetChat)
-    t.is(telegramOutMessage2.parse_mode, outMessage2.contentType)
-    t.is(telegramOutMessage2.reply_to_message_id, outMessage2.replayToMessageId)
-    t.is(telegramOutMessage2.text, outMessage2.content)
+    t.is(telegramOutMessage2.parse_mode, outMessage2.content.contentType)
+    t.is(telegramOutMessage2.text, outMessage2.content.text)
 
 })

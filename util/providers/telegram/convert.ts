@@ -1,5 +1,5 @@
-import { InMessage, OutMessage, Update } from '../../../types/base'
-import { TelegramInMessage, TelegramOutMessage, TelegramUpdate } from './types';
+import { InMessage, OutMessage, Update, MessageContent } from '../../../types/base'
+import { TelegramInMessage, TelegramOutMessage, TelegramUpdate, Keyboard, InlineKeyboard } from './types'
 
 export function toUpdate(tgUpdate: TelegramUpdate): Update {
     return {
@@ -25,8 +25,30 @@ export function toInMessage(tgMessage: TelegramInMessage): InMessage {
 export function toOutMessage(message: OutMessage): TelegramOutMessage {
     return {
         chat_id: message.targetChat,
-        text: message.content,
-        parse_mode: message.contentType,
-        reply_to_message_id: message.replayToMessageId
+        text: message.content.text,
+        parse_mode: message.content.contentType,
+        reply_markup: getMarkup(message.content)
+    }
+}
+
+function getMarkup(messageContent: MessageContent): Keyboard | InlineKeyboard | undefined {
+    if (messageContent.keyboard != null) {
+        return {
+            keyboard: messageContent.keyboard.buttons.map(buttonRow => buttonRow.map(text => { return { text: text } })),
+            resize_keyboard: messageContent.keyboard.resize,
+            one_time_keyboard: messageContent.keyboard.oneTime
+        }
+    }
+    else if (messageContent.buttons != null) {
+        return {
+            inline_keyboard: messageContent.buttons.map(buttonRow => buttonRow.map(button => {
+                return {
+                    text: button.text,
+                    url: button.url,
+                    callback_data: button.callbackData
+                }
+            })
+            )
+        }
     }
 }

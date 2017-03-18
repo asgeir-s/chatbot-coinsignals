@@ -23,10 +23,27 @@ export type InMessage = {
     content: string
 }
 
+export type MessageContent = {
+    text: string
+    contentType?: "Markdown" | "HTML",
+    keyboard?: Keyboard
+    buttons?: Array<Array<Button>>
+}
+
 export type OutMessage = {
     provider: string,
     targetChat: number | string
-    content: string
-    replayToMessageId: number | string
-    contentType?: "Markdown" | "HTML"
+    content: MessageContent
+}
+
+export type Keyboard = {
+    buttons: Array<Array<string>>,
+    resize?: boolean,
+    oneTime?: boolean
+}
+
+export type Button = {
+    text: string,
+    url?: string,
+    callbackData?: string
 }
