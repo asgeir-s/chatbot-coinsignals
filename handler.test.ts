@@ -1,7 +1,8 @@
 import test from 'ava'
 declare var require: any;
 
-import { handle, Responds } from './handler'
+import { Responds } from './types/base'
+import { handle } from './handler'
 const event = require('./event')
 
 test('foo', t => {

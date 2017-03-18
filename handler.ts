@@ -1,23 +1,32 @@
+import * as Telegram from './util/telegram'
 import { bot } from './bot'
+import { log } from './util/logger'
 
-export type Responds = {
-  statusCode: number
-  body: string
-}
+let lastUpdateId = -1
 
 export function handle(event, context, callback) {
-  console.log('event:')
-  console.log(JSON.stringify(event))
-  bot(JSON.parse(event.body))
-    .then(res => {
-      return {
-        statusCode: 200,
-        body: res
-      }
-    })
-    .then(_ => (console.log('Respondse: ' + JSON.stringify(_, null, 2)), _))
-    .then(result => callback(null, result))
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
+  const update = Telegram.convert.toUpdate(JSON.parse(event.body))
+  log.custom("UPDATE", "received new update", update)
+  if (update.id > lastUpdateId) {
+    return bot(update.message)
+      .then(res => {
+        return {
+          statusCode: 200,
+          body: res
+        }
+      })
+      .then(_ => log.custom('RESULT', 'SUCCESS: returning result', _))
+      .then(result => callback(null, result))
+      .catch(error => {
+        log.exception("unknow exception", error)
+        return callback({
+          statusCode: 500,
+          data: "internal server error",
+        }, null)
+      })
+  }
+  else {
+    log.warning("received a update that was already processed")
+    return callback(null, 'ignored: already processed')
+  }
 }
