@@ -49,7 +49,7 @@ plugins:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
+package:
 #  include:
 #    - include-me.js
 #    - include-me-dir/**
@@ -58,12 +58,12 @@ plugins:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  bot:
+    handler: handler.handle
     events:
      - http:
-         path: hello
-         method: get
+         path: bot/hLQHhGoqR7kJW6ZK14ewqsAQRq6Ruqwp7QxFSixDmAHKMc19g49cDB8rB7s1Ke
+         method: post
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

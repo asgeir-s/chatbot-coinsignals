@@ -1,0 +1,50 @@
+{
+    "resource": "/bot/hLQHhGoqR7kJW6ZK14ewqsAQRq6Ruqwp7QxFSixDmAHKMc19g49cDB8rB7s1Ke",
+    "path": "/bot/hLQHhGoqR7kJW6ZK14ewqsAQRq6Ruqwp7QxFSixDmAHKMc19g49cDB8rB7s1Ke",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept-Encoding": "gzip, deflate",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "GB",
+        "Content-Type": "application/json",
+        "Host": "11ry68uwk8.execute-api.us-east-1.amazonaws.com",
+        "Via": "1.1 3a3025640eaad9970531c0d9450c1606.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "upiA8wV_jWYBgr3q1oOLVGa6EAv3LORAoW6BfNWlDfSyademaxajww==",
+        "X-Amzn-Trace-Id": "Root=1-58cd0e09-3ddcaff6547630ee0fc1f0ef",
+        "X-Forwarded-For": "149.154.167.204, 216.137.60.81",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "accountId": "494753849073",
+        "resourceId": "h5bgo0",
+        "stage": "dev",
+        "requestId": "f62a5930-0bc6-11e7-9535-d78104b06e94",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "apiKey": null,
+            "sourceIp": "149.154.167.204",
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": null,
+            "user": null
+        },
+        "resourcePath": "/bot/hLQHhGoqR7kJW6ZK14ewqsAQRq6Ruqwp7QxFSixDmAHKMc19g49cDB8rB7s1Ke",
+        "httpMethod": "POST",
+        "apiId": "11ry68uwk8"
+    },
+    "body": "{\"update_id\":414361944,\n\"message\":{\"message_id\":5,\"from\":{\"id\":127969060,\"first_name\":\"TradersBit\",\"username\":\"TradersBit_com\"},\"chat\":{\"id\":127969060,\"first_name\":\"TradersBit\",\"username\":\"TradersBit_com\",\"type\":\"private\"},\"date\":1489833481,\"text\":\"wally\"}}",
+    "isBase64Encoded": false
+}

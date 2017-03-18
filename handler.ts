@@ -1,7 +1,14 @@
 import { bot } from './bot'
 
-export function hello(event, context, callback) {
-  bot(event)
+export type Responds = {
+  statusCode: number
+  body: string
+}
+
+export function handle(event, context, callback) {
+  console.log('event:')
+  console.log(JSON.stringify(event))
+  bot(JSON.parse(event.body))
     .then(res => {
       return {
         statusCode: 200,

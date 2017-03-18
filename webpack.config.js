@@ -13,9 +13,12 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js'] // note if using webpack 1 you'd also need a '' in the array as well
     },
     module: {
-        loaders: [
+        rules: [
             // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-            { test: /\.tsx?$/, loader: 'ts-loader' }
+            {
+                test: /^((?!\.test\.).)*\.tsx?$/, // should not be problematic
+                loader: 'ts-loader'
+            }
         ]
     }
 }

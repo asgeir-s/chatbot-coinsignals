@@ -6,3 +6,10 @@ jspm_packages
 .serverless
 
 .webpack
+
+secret.ts
+
+# Typsecript
+*.js
+*.js.map
+*.d.ts

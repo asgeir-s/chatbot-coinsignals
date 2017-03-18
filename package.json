@@ -5,14 +5,18 @@
   "main": "handler.js",
   "scripts": {
     "web": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc -p ./tsconfig.test.json && ava -v"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "ava": "^0.18.2",
     "serverless-webpack": "github:elastic-coders/serverless-webpack#fa6379507442bd2ac4d6455a7ab14f57efdd41ff",
     "ts-loader": "^2.0.2",
     "typescript": "^2.2.1",
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "ramda": "^0.23.0"
   }
 }
