@@ -5,10 +5,6 @@ import { Responds } from './types/base'
 import { handle } from './handler'
 const event = require('./event')
 
-test('foo', t => {
-    t.pass()
-})
-
 function callHandler(handler, event) {
     return new Promise((resolve, reject) => {
         handler(event, {}, (fail, done) => fail ? reject(fail) : resolve(done))

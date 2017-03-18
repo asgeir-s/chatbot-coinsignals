@@ -1,13 +1,14 @@
-import * as Telegram from './util/telegram'
+import { toUpdate } from './util/convert'
 import { bot } from './bot'
 import { log } from './util/logger'
 
 let lastUpdateId = -1
 
 export function handle(event, context, callback) {
-  const update = Telegram.convert.toUpdate(JSON.parse(event.body))
+  const update = toUpdate('telegram', JSON.parse(event.body))
   log.custom("UPDATE", "received new update", update)
   if (update.id > lastUpdateId) {
+    lastUpdateId = update.id
     return bot(update.message)
       .then(res => {
         return {

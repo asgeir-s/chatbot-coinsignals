@@ -10,14 +10,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node-fetch": "^1.6.7",
+    "@types/ramda": "0.0.4",
     "ava": "^0.18.2",
     "serverless-webpack": "github:elastic-coders/serverless-webpack#fa6379507442bd2ac4d6455a7ab14f57efdd41ff",
     "ts-loader": "^2.0.2",
     "typescript": "^2.2.1",
-    "webpack": "^2.2.1",
-    "@types/ramda": "0.0.4"
+    "webpack": "^2.2.1"
   },
   "dependencies": {
+    "node-fetch": "^1.6.3",
     "ramda": "^0.23.0"
   }
 }

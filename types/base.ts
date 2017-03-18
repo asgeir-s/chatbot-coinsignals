@@ -1,6 +1,6 @@
 export type Update = {
-    id: number,
-    message: Message
+    id: number
+    message: InMessage
 }
 
 export type Responds = {
@@ -10,14 +10,23 @@ export type Responds = {
 }
 
 export type User = {
-    id: number,
-    name: string,
+    id: number | string
+    name: string
     username: string
 }
 
-export type Message = {
-    id: number,
-    from: User,
-    timestamp: number,
+export type InMessage = {
+    provider: string,
+    id: number | string
+    from: User
+    timestamp: number
     content: string
+}
+
+export type OutMessage = {
+    provider: string,
+    targetChat: number | string
+    content: string
+    replayToMessageId: number | string
+    contentType?: "Markdown" | "HTML"
 }
